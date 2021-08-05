@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./sent.component.css">
+  <title>Document</title>
+</head>
+<body>
+<div class="row">
+  <div class="col-2">
+    <div class="sidenav ">
+
+      <a href="/admin">Home</a>
+      <a href="/compose">Compose</a>
+      <a href="/inbox">Inbox <i class="border"
+                                style="border-radius: 5px;
+                                        color: red;
+                                        width: 10px;
+                                        text-align: center;
+                                        padding-left: 5px;
+                                        padding-right: 5px;"
+                                *ngIf="countInboxMessages>0"
+      >{{countInboxMessages}}</i></a>
+      <a href="/unread">Unread <i class="border"
+                                  style="border-radius: 5px;
+                                        color: red;
+                                        width: 10px;
+                                        text-align: center;
+                                        padding-left: 5px;
+                                        padding-right: 5px;"
+                                  *ngIf="countUnreadMessages>0"
+      >{{countUnreadMessages}}</i> </a>
+      <a href="/sent">Sent <i class="border"
+                              style="border-radius: 5px;
+                                        color: red;
+                                        width: 10px;
+                                        text-align: center;
+                                        padding-left: 5px;
+                                        padding-right: 5px;"
+                              *ngIf="countSentMessages>0"
+      >{{countSentMessages}}</i></a>
+      <a href="/sent">Archive <i class="border"
+                                 style="border-radius: 5px;
+                                        color: red;
+                                        width: 10px;
+                                        text-align: center;
+                                        padding-left: 5px;
+                                        padding-right: 5px;"
+                                 *ngIf="countArchiveMessages>0"
+      >{{countArchiveMessages}}</i></a>
+      <a href="/bin">Bin <i class="border"
+                            style="border-radius: 5px;
+                                        color: red;
+                                        width: 10px;
+                                        text-align: center;
+                                        padding-left: 5px;
+                                        padding-right: 5px;"
+                            *ngIf="countBinMessages>0"
+      >{{countBinMessages}}</i></a>
+      <a href="/setting">Setting</a>
+      <a href=" " (click)="logOut()">Log out</a>
+
+
+    </div>
+  </div>
+  <div class="col-10">
+    <div class="text-center" style="font-size: xx-large; color: #7952b3"> Sent messages</div>
+    <input type="search" id="searchField" class="form-control" name="searchField" placeholder="write to search"
+           [(ngModel)]="searchedKeyword"/>
+    <table>
+
+      <tr class="border-bottom inf" *ngFor="let message of messages  | filter: searchedKeyword  "
+         >
+        <th>{{message.receiverEmail }}</th>
+        <th  (click)="onClick(message)">{{message.subject}}</th>
+        <th  (click)="onClick(message)">{{message.messageText.substr(0, 60) + " ..."}}</th>
+        <th>
+          <div [ngSwitch]="message.read.toString()">
+            <p *ngSwitchCase=read STYLE="color: green;">READ</p>
+            <p *ngSwitchCase=unread style="color: red;">UNREAD</p>
+          </div>
+        </th>
+        <th style="text-align: right; " >
+          <div class="btn-primary btn" style="margin-right: 5px;" (click)="deleteMessage(message)">delete</div>
+        </th>
+      </tr>
+    </table>
+  </div>
+</div>
+</body>
+</html>

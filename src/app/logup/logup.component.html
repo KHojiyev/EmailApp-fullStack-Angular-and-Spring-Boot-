@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <style>
+    body{
+      background: linear-gradient( #7952b3, ghostwhite);
+      padding-right: 25%;
+      padding-left: 25%;
+    }
+    .form-control{
+
+    }
+  </style>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header text-center">Register</div>
+        <div class="card-body">
+
+          <form class="form-horizontal"  (submit)="registerUser($event)">
+
+            <div class="form-group">
+              <div class="alert-danger alert" *ngIf="pressed && !firstName">FIRST NAME REQUIRED</div>
+              <label for="firstName" class="cols-sm-2 control-label">Your First Name</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="name" id="firstName" placeholder="Enter your First name" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="alert-danger alert" *ngIf="pressed && !lastName">LAST NAME REQUIRED</div>
+              <label for="lastName" class="cols-sm-2 control-label">Your Last Name</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="name" id="lastName" placeholder="Enter your Last name" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="alert-danger alert" *ngIf="pressed && !email">EMAIL REQUIRED</div>
+              <label for="email" class="cols-sm-2 control-label">Your Email</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="alert-danger alert" *ngIf="pressed && !phone">EMAIL REQUIRED</div>
+              <label for="phone" class="cols-sm-2 control-label">Your Phone</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="email" id="phone" placeholder="Enter your Phone" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="alert-danger alert" *ngIf="pressed && !password">PASSWORD REQUIRED</div>
+              <label for="password" class="cols-sm-2 control-label">Password</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="alert-danger alert" *ngIf="pressed && !confirmPassword">CONFIRM PASSWORD DOES NOT MATCH</div>
+              <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                  <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group ">
+              <button type="submit" class="btn btn-primary btn-lg btn-block login-button"  >Register</button>
+            </div>
+            <div class="login-register">
+              <a href="/login">Login</a>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+
+

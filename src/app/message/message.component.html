@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./message.component.css">
+</head>
+<body>
+<div class="row">
+
+  <div class="col-2">
+
+      <div class="sidenav" >
+        <a href="/admin" >Home</a>
+        <a href="/compose" >Compose</a>
+        <a href="/admin">Archive</a>
+        <a href="/sent">Delete</a>
+        <a href="/reply" *ngIf="currentMessage.receiverEmail == ActiveUser.email">Reply</a>
+
+      </div>
+
+  </div>
+  <div class="col-10 main-bg main-content">
+
+    <div class=" main-content form-group card-body"  *ngIf = "currentMessage">
+
+
+      <div class="text-center">{{Status}}</div>
+      <div class="border-bottom">{{"From: "+currentMessage.senderEmail}}</div>
+      <div class="border-bottom">{{"To: "+currentMessage.receiverEmail}}</div>
+      <div class="border-bottom">{{"Subject: "+currentMessage.subject}}</div>
+
+      <div class="comment-area border-bottom">Message text:<textarea class="form-control" rows="4">{{currentMessage.messageText}}</textarea></div>
+      <div class="border-bottom"><p style="font-size: small">{{"Sending time: "+currentMessage.createdAt}}</p>
+        <p style="font-size: small;text-align: right" >{{"Receiving time: "+currentMessage.receivedAt}}</p></div>
+
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
